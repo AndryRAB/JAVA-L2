@@ -6,7 +6,7 @@ import java.awt.Graphics;
 
 public class Courbe implements Dessinable {
     
-    Function<Double, Double> f;
+    Function<Double, Double> f; //la fonction mathématique à tracer
     double xMin, xMax;
     int n; // nombre de segments
     Color color;
@@ -24,7 +24,7 @@ public class Courbe implements Dessinable {
         Color oldColor = g.getColor();
         g.setColor(this.color);
         double step = (xMax - xMin) / n;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) { // boucle de traçage de chaque segment constituant la courbe
             double x1 = xMin + i * step;
             double y1 = f.apply(x1);
             double x2 = xMin + (i + 1) * step;

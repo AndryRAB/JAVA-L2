@@ -1,8 +1,8 @@
 package infographie;
 
-public class CoordsEcr { //screen coordinates of a point    
-    private int xE; // x coordinate on screen
-    private int yE; // y coordinate on screen
+public class CoordsEcr { //Coordonnées d'un point à l'écran
+    private int xE; 
+    private int yE; 
 
     public CoordsEcr(int xE, int yE) {
         this.xE = xE;

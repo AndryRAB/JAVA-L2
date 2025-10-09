@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 
 import javax.swing.JPanel;
-import javax.swing.JFrame;
+
 
 public class Repere extends JPanel {
 

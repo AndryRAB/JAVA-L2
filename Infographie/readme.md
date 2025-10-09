@@ -12,7 +12,7 @@ Ce projet est une application graphique 2D simple et de géométrie analytique d
 ## Structure des Fichiers
 
 *   `src/`: Contient le package de l'application.
-    *   `infographie/`: Contient tous les fichiers source Java (`Main.java`, `Dessinable.java`, `Point.java`, etc.).
+    *   `com/ispm/infographie/`: Contient tous les fichiers source Java (`Main.java`, `Dessinable.java`, `Point.java`, etc.).
 *   `bin/`: Contient les fichiers de classe (`.class`) Java compilés.
 *   `readme.md`: Ce fichier.
 
