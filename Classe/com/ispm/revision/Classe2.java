@@ -31,26 +31,12 @@ public class Classe2 { // Partie B - 8)
     }
 
     public double getMoyenne() {
-        if (note.isEmpty()) {
-            return 0.0;
-        }
-        int somme = 0;
-        for (int n : note.values()) {
-            somme += n;
-        }
-        return (double) somme / note.size();
+        return note.values().stream().mapToInt(Integer::intValue).average().orElse(0.0); /// utilisation de streams pour simplifier le calcul de la moyenne
     }
 
     public double getMoyenneAge() { // Partie B - 9)
-        if (age.isEmpty()) {
-            return 0.0;
-        }
-        int somme = 0;
-        for (int a : age.values()) {
-            somme += a;
-        }
-        return (double) somme / age.size();
-    }
+       return age.values().stream().mapToInt(Integer::intValue).average().orElse(0.0); /// utilisation de streams pour simplifier le calcul de la moyenne
+    }   
 
 
 }
