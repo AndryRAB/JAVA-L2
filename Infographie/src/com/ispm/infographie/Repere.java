@@ -1,5 +1,6 @@
 package infographie;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.LinkedList;
@@ -16,20 +17,23 @@ public class Repere extends JPanel {
 
     private LinkedList<Dessinable> elements = new LinkedList<>();
     
-    public Repere(int ox, int oy, int echx, int echy) {
+    public Repere(int ox, int oy, int echx, int echy, int width, int height) {
         super();
         this.ox = ox;
         this.oy = oy;
         this.echx = echx;
         this.echy = echy;
+        setPreferredSize(new Dimension(width, height));
+        setBackground(Color.black);
         elements = new LinkedList<>();
-        setPreferredSize(new Dimension(800, 600));
     }
 
-    public Repere() {        
-        super();
-        elements = new LinkedList<>();
-        setPreferredSize(new Dimension(800, 600));
+    public Repere() {
+        this(400, 300, 20, 20, 800, 600);
+    }
+
+    public Repere(int width, int height, int echx, int echy) {
+        this( width / 2, height / 2, echx, echy, width, height);
     }
 
     public void addElement(Dessinable d) {
@@ -61,8 +65,11 @@ public class Repere extends JPanel {
         super.paintComponent(g);
         int width = getWidth();
         int height = getHeight();
-        g.drawLine(0, height / 2, width, height / 2); // Axe horizontale
-        g.drawLine(width / 2, 0, width / 2, height); // Axe verticale
+
+        g.setColor(Color.white);
+
+        g.drawLine(0, oy, width, oy); // Axe horizontale
+        g.drawLine(ox, 0, ox, height); // Axe verticale
 
         // Graduations
         for (int x = ox + echx; x < width; x += echx) {
