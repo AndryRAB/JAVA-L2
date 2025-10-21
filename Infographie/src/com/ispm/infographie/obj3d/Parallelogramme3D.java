@@ -7,14 +7,14 @@ import infographie.CoordsEcr;
 import infographie.Dessinable;
 import infographie.Repere;
 
-public class Carrer3D implements Dessinable {
+public class Parallelogramme3D implements Dessinable {
 
     private Point3D[] points;
     private int[] rang;
     private Color color;
     private int tx, ty, tz;
 
-    public Carrer3D(int x, int y, int z, int arret, Color color) {
+    public Parallelogramme3D(int x, int y, int z, int arret, Color color) {
         this.points = new Point3D[8];
         this.color = color;
         int d = arret / 2;
@@ -23,16 +23,16 @@ public class Carrer3D implements Dessinable {
         tz = z;
 
         // Avant
-        points[0] = new Point3D(-d, -d, 0, 'o', color);
-        points[1] = new Point3D(d, -d, 0, 'o', color);
-        points[2] = new Point3D(d, d, 0, 'o', color);
-        points[3] = new Point3D(-d, d, 0, 'o', color);
+        points[0] = new Point3D(-d, -d, 0,  color);
+        points[1] = new Point3D(d, -d, 0,  color);
+        points[2] = new Point3D(d, d, 0,  color);
+        points[3] = new Point3D(-d, d, 0,  color);
 
         // Ariere
-        points[4] = new Point3D(-d, -d, -d, 'o', color);
-        points[5] = new Point3D(d, -d, -d, 'o', color);
-        points[6] = new Point3D(d, d, -d, 'o', color);
-        points[7] = new Point3D(-d, d, -d, 'o', color);
+        points[4] = new Point3D(-d, -d, -d,  color);
+        points[5] = new Point3D(d, -d, -d,  color);
+        points[6] = new Point3D(d, d, -d,  color);
+        points[7] = new Point3D(-d, d, -d,  color);
 
         rang = new int[] { 0, 1, 2, 3, 0,
                 4, 5, 6, 7, 4,

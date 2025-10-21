@@ -18,11 +18,14 @@ public class Repere extends JPanel implements ActionListener {
     private int echx = 20; // Facteur d'échelle
     private int echy = 20; // Facteur d'échelle
 
+    private static final int TIMER_DELAY = 16; // Approx 60 FPS
+
     public Consumer<Double> onPaint;
     private LinkedList<Dessinable> elements = new LinkedList<>();
+    private LinkedList<Animable> animables = new LinkedList<>();
 
     private Timer timer;
-    private double alphaTest;
+    //private double alphaTest;
 
     public Repere(int ox, int oy, int echx, int echy, int width, int height) {
         super();
@@ -33,9 +36,14 @@ public class Repere extends JPanel implements ActionListener {
         setPreferredSize(new Dimension(width, height));
         setBackground(Color.black);
         elements = new LinkedList<>();
-        alphaTest = 0;
+        animables = new LinkedList<>();
+        //alphaTest = 0;
 
-        timer = new Timer(16, this);
+      
+    }
+
+    public void startAnimation() {
+        timer = new Timer(TIMER_DELAY, this);
         timer.start();
     }
 
@@ -49,6 +57,10 @@ public class Repere extends JPanel implements ActionListener {
 
     public void addElement(Dessinable d) {
         elements.add(d);
+        if (d instanceof Animable) {
+            animables.add((Animable) d);
+        }
+    
     }
 
     public int getOx() {
@@ -108,11 +120,11 @@ public class Repere extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (onPaint == null)
-            return;
-
-        onPaint.accept(alphaTest);
-        alphaTest += 0.0001;
+        for (Animable a : animables) {
+            a.update(TIMER_DELAY / 1000.0); 
+        }
+        if (onPaint != null)
+            onPaint.accept(TIMER_DELAY / 1000.0);
         repaint();
     }
 }
