@@ -5,36 +5,44 @@ import java.awt.Color;
 import javax.swing.JFrame;
 
 import infographie.obj3d.Parallelogramme3D;
+import infographie.obj3d.Pyramide3D;
 
 public class Main {
     public static void main(String[] args) {
         Repere repere = new Repere(512, 600, 40, 40, 1024, 768);
         JFrame frame = new JFrame();
 
-        Parallelogramme3D c3d1 = new Parallelogramme3D(8, 4, 1, 2, Color.red);
-        Parallelogramme3D c3d2 = new Parallelogramme3D(4, 4, 1, 2, Color.blue);
-        Parallelogramme3D c3d3 = new Parallelogramme3D(0, 4, 1, 2, Color.green);
+        // CarreAnimSimple c2d1 = new CarreAnimSimple(0, 0, 2, Color.yellow);
+        // repere.addElement(c2d1);
 
-        CarreAnimSimple c2d1 = new CarreAnimSimple(0, 0, 2, Color.yellow);
-        repere.addElement(c2d1);
+        Parallelogramme3D p3d1 = new Parallelogramme3D(5, 2, 2, Color.blue);
+        p3d1.addTranslation(6, 2, 2);
 
-        repere.onPaint = (i) -> {
-            c3d1.selfRotateX(i);
-            c3d1.selfRotateY(i);
+        Pyramide3D p3d2 = new Pyramide3D(2, 2, Color.blue);
+        p3d2.addTranslation(6, 4.5f, 2);
 
-            c3d2.selfRotateX(-i / 2);
-            c3d2.selfRotateZ(i);
+        Parallelogramme3D p3d3 = new Parallelogramme3D(5, 2, 2, Color.green);
+        p3d3.addTranslation(0, 2, 2);
 
-            c3d3.selfRotateY(i);
-            c3d3.selfRotateZ(i);
-        };
+        Pyramide3D p3d4 = new Pyramide3D(2, 2, Color.green);
+        p3d4.addTranslation(0, 4.5f, 2);
 
-        // TODO : Modifier le code de Parallelogramme3D pour y inclure les animations (implémenter Animable)
+        Parallelogramme3D p3d5 = new Parallelogramme3D(5, 2, 2, Color.red);
+        p3d5.addTranslation(-6, 2, 2);
+
+        Pyramide3D p3d6 = new Pyramide3D(2, 2, Color.red);
+        p3d6.addTranslation(-6, 4.5f, 2);
+
+        // CHECK : Modifier le code de Parallelogramme3D pour y inclure les animations
+        // (implémenter Animable)
         // et enlever onPaint de Repere. Inspirez-vous de CarreAnimSimple.
 
-        repere.addElement(c3d1);
-        repere.addElement(c3d2);
-        repere.addElement(c3d3);
+        repere.addElement(p3d1);
+        repere.addElement(p3d2);
+        repere.addElement(p3d3);
+        repere.addElement(p3d4);
+        repere.addElement(p3d5);
+        repere.addElement(p3d6);
         repere.startAnimation();
 
         // Placer le repère dans une fenêtre
@@ -43,7 +51,6 @@ public class Main {
         frame.getContentPane().add(repere);
         frame.pack();
         frame.setVisible(true);
-        
 
     }
 

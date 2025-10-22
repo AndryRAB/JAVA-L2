@@ -1,58 +1,68 @@
 package infographie.obj3d;
 
-import java.awt.Color;
+import infographie.CoordsRepere;
 
-import infographie.Point;
+//CHECK : modifier la superclasse, car on ne veux pas déssiner le point. Utiliser plutôt CoordsRepere 
 
-//TODO : modifier la superclasse, car on ne veux pas déssiner le point. Utiliser plutôt CoordsRepere 
-
-public class Point3D extends Point {
+public class Point3D extends CoordsRepere {
 
     private float z;
 
-    public Point3D(float xR, float yR, float zR, Color c) {
-        super(xR, yR, 'o', c);
+    public Point3D(float xR, float yR, float zR) {
+        super(xR, yR);
 
         this.z = zR;
     }
 
-    @Override
-    public float getxR() {
-        if (z <= 0)
-            return super.getxR();
-        return super.getxR() / z;
+    public CoordsRepere projection2D() {
+        // Distance focale pour contrôler la perspective
+        float f = 10.0f;
+
+        // Si le point est derrière la caméra, on le projette quand même mais très loin
+        float zProjection = z <= 0 ? 0.1f : z;
+
+        // Projection perspective avec distance focale
+        float xProjected = (this.getxR() * f) / (zProjection + f);
+        float yProjected = (this.getyR() * f) / (zProjection + f);
+
+        return new CoordsRepere(xProjected, yProjected);
     }
 
-    @Override
-    public float getyR() {
-        if (z <= 0)
-            return super.getyR();
-        return super.getyR() / z;
-    }
-
+    // #region Rotation
     public Point3D rotateX(double alpha) {
         float yprime = (float) (Math.cos(alpha) * super.getyR() - z * Math.sin(alpha));
         float zprime = (float) (Math.sin(alpha) * super.getyR() + z * Math.cos(alpha));
 
-        return new Point3D(super.getxR(), yprime, zprime,  this.color);
+        return new Point3D(super.getxR(), yprime, zprime);
     }
 
     public Point3D rotateY(double alpha) {
         float xprime = (float) (Math.cos(alpha) * super.getxR() + z * Math.sin(alpha));
         float zprime = (float) (-Math.sin(alpha) * super.getxR() + z * Math.cos(alpha));
 
-        return new Point3D(xprime, super.getyR(), zprime, this.color);
+        return new Point3D(xprime, super.getyR(), zprime);
     }
 
     public Point3D rotateZ(double alpha) {
         float xprime = (float) (Math.cos(alpha) * super.getxR() - super.getyR() * Math.sin(alpha));
         float yprime = (float) (Math.sin(alpha) * super.getxR() + super.getyR() * Math.cos(alpha));
 
-        return new Point3D(xprime, yprime, z,  this.color);
+        return new Point3D(xprime, yprime, z);
+    }
+    // #endregion
+
+    public Point3D translate(Point3D t) {
+        return new Point3D(super.getxR() + t.getxR(), super.getyR() + t.getyR(), z + t.getZ());
     }
 
-    public Point3D translate(int x, int y, int z) {
-        return new Point3D(super.getxR() + x, super.getyR() + y, z,  this.color);
+    // #region GetterSetter
+    public float getZ() {
+        return z;
     }
+
+    public void setZ(float z) {
+        this.z = z;
+    }
+    // #endregion
 
 }

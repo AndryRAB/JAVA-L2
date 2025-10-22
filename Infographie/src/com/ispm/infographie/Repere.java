@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import javax.swing.Timer;
-import java.util.function.Consumer;
 
 import javax.swing.JPanel;
 
@@ -20,12 +19,10 @@ public class Repere extends JPanel implements ActionListener {
 
     private static final int TIMER_DELAY = 16; // Approx 60 FPS
 
-    public Consumer<Double> onPaint;
     private LinkedList<Dessinable> elements = new LinkedList<>();
     private LinkedList<Animable> animables = new LinkedList<>();
 
     private Timer timer;
-    //private double alphaTest;
 
     public Repere(int ox, int oy, int echx, int echy, int width, int height) {
         super();
@@ -37,9 +34,6 @@ public class Repere extends JPanel implements ActionListener {
         setBackground(Color.black);
         elements = new LinkedList<>();
         animables = new LinkedList<>();
-        //alphaTest = 0;
-
-      
     }
 
     public void startAnimation() {
@@ -60,7 +54,7 @@ public class Repere extends JPanel implements ActionListener {
         if (d instanceof Animable) {
             animables.add((Animable) d);
         }
-    
+
     }
 
     public int getOx() {
@@ -121,10 +115,9 @@ public class Repere extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         for (Animable a : animables) {
-            a.update(TIMER_DELAY / 1000.0); 
+            a.update(TIMER_DELAY / 1000.0);
         }
-        if (onPaint != null)
-            onPaint.accept(TIMER_DELAY / 1000.0);
+
         repaint();
     }
 }
