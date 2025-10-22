@@ -16,12 +16,10 @@ public abstract class Element3D implements Animable, Dessinable {
     protected Color color;
     protected Point3D translation;
 
-    protected double speed;
 
     public Element3D(float x, float y, float z, Color color) {
         this.color = color;
         translation = new Point3D(x, y, z);
-        speed = 2f;
     }
 
     public Element3D(int x, int y, int z) {

@@ -2,7 +2,7 @@ package infographie.obj3d;
 
 import java.awt.Color;
 
-public class Parallelogramme3D extends Element3D {
+public class Parallelogramme3D extends RotatingElement3D{
 
     public Parallelogramme3D(float hauteur, float largeur, float profondeur, Color color) {
         super(0, 0, 0, color);
@@ -29,11 +29,6 @@ public class Parallelogramme3D extends Element3D {
                 4, 5, 6, 7, 4,
                 7, 3, 2, 6, 7,
                 4, 5, 1, 0, 4 };
-    }
-
-    @Override
-    public void update(double deltaTime) {
-        this.selfRotateY(speed * deltaTime);
     }
 
 }

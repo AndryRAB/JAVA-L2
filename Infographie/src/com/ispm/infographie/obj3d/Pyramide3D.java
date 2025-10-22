@@ -2,7 +2,7 @@ package infographie.obj3d;
 
 import java.awt.Color;
 
-public class Pyramide3D extends Element3D {
+public class Pyramide3D extends RotatingElement3D {
 
     public Pyramide3D(float taille, float hauteur, Color color) {
         super(0, 0, 0, color);
@@ -23,10 +23,5 @@ public class Pyramide3D extends Element3D {
                 4, 2, 3, 4, 1
         };
     }
-
-    @Override
-    public void update(double deltaTime) {
-        this.selfRotateY(speed * deltaTime);
-    }
-
+    
 }

@@ -21,7 +21,7 @@ public class Carre2D implements Dessinable {
         float d = arete / 2;        
         float x =  centre.getxR();
         float y =  centre.getyR();
-        points[0] = new CoordsRepere(x - d, y - d); // on ne se soucie pas des couleurs ni des types ici
+        points[0] = new CoordsRepere(x - d, y - d); 
         points[1] = new CoordsRepere(x + d, y - d);
         points[2] = new CoordsRepere(x + d, y + d);
         points[3] = new CoordsRepere(x - d, y + d);
