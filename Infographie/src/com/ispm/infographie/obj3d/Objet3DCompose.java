@@ -10,6 +10,9 @@ public class Objet3DCompose extends RotatingElement3D {
 
     private Element3D[] objets;
 
+    //TODO : Modifier la classe  Objet3DCompose pour qu'elle combine plusieurs objets 3D qui seront spécifiés dans le constructeur (Parallélogramme3D et Pyramide3D).
+    // L'objet composé doit gérer les transformations (rotation, translation) de manière cohérente en calculant un barycentre commun.
+
     public Objet3DCompose(float x, float y, float z) {
         super(x, y, z, Color.white);
 

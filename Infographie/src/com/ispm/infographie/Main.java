@@ -27,6 +27,8 @@ public class Main {
         frame.pack();
         frame.setVisible(true);
 
+        //TODO : créer une classe Repère3D qui hérite de Repère et qui ajoute des axes X, Y, Z visibles. Et qui contient la projection 3D au lieu de les mettre dans les Objet3D directement.
+
     }
 
 }
