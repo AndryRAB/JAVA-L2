@@ -14,8 +14,8 @@ public abstract class Element3D implements Animable, Dessinable {
 
     protected Point3D[] points;
     protected int[] rang;
-    protected Color color;
-    protected Point3D translation;
+    private Color color;
+    private Point3D translation;
 
     public Element3D(float x, float y, float z, Color color) {
         this.color = color;
