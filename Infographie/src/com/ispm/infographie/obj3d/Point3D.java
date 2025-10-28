@@ -29,6 +29,7 @@ public class Point3D extends CoordsRepere {
     }
 
     // #region Rotation
+
     public Point3D rotateX(double alpha) {
         float yprime = (float) (Math.cos(alpha) * super.getyR() - z * Math.sin(alpha));
         float zprime = (float) (Math.sin(alpha) * super.getyR() + z * Math.cos(alpha));
@@ -53,6 +54,14 @@ public class Point3D extends CoordsRepere {
 
     public Point3D translate(Point3D t) {
         return new Point3D(super.getxR() + t.getxR(), super.getyR() + t.getyR(), z + t.getZ());
+    }
+
+    public static Point3D sub(Point3D a, Point3D b) {
+        return new Point3D(a.getxR() - b.getxR(), a.getyR() - b.getyR(), a.getZ() - b.getZ());
+    }
+
+    public static Point3D produitScalair(Point3D a, float n) {
+        return new Point3D(a.getxR() * n, a.getyR() * n, a.getZ() * n);
     }
 
     // #region GetterSetter
